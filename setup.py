@@ -134,7 +134,7 @@ setup(
     install_requires=[
             'yarl',
             'aiohttp',
-            'aiosocks',
+            'aiosocksy',
             'lxml',
             'PySocks',
             'fake-useragent',

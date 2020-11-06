@@ -1,9 +1,9 @@
-from aiosocks.connector import ProxyConnector, ProxyClientRequest
+from aiosocksy.connector import ProxyConnector, ProxyClientRequest
 from proxy_py import settings
 
 import ssl
 import aiohttp
-import aiosocks
+import aiosocksy
 import asyncio
 import async_requests
 
@@ -91,8 +91,8 @@ class BaseChecker:
             aiohttp.client_exceptions.ClientProxyConnectionError,
             aiohttp.client_exceptions.ClientResponseError,
             aiohttp.client_exceptions.ClientPayloadError,
-            aiosocks.errors.SocksError,
-            aiosocks.SocksError,
+            aiosocksy.errors.SocksError,
+            aiosocksy.SocksError,
             asyncio.TimeoutError,
             ssl.CertificateError,
             aiohttp.client_exceptions.ClientOSError,

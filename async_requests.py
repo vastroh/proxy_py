@@ -1,6 +1,6 @@
 import aiohttp
 import json
-from aiosocks.connector import ProxyConnector, ProxyClientRequest
+from aiosocksy.connector import ProxyConnector, ProxyClientRequest
 
 
 async def get(url, **kwargs):

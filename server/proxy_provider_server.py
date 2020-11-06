@@ -24,7 +24,7 @@ class ProxyProviderServer(BaseApp):
         logger_handler.setFormatter(logging.Formatter(settings.LOG_FORMAT_STRING))
 
         logger.addHandler(logger_handler)
-        
+
         super(ProxyProviderServer, self).__init__(logger)
 
         self.host = host
@@ -34,7 +34,8 @@ class ProxyProviderServer(BaseApp):
     def start(self, loop):
         loop.run_until_complete(self.init())
 
-        return web.run_app(self._app, host=self.host, port=self.port, loop=loop)
+        # return web.run_app(self._app, host=self.host, port=self.port, loop=loop)
+        return web.run_app(self._app, host=self.host, port=self.port)
 
     async def setup_router(self):
         api_v1_app = ApiV1App(logger=self.logger)

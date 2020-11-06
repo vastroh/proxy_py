@@ -1,6 +1,7 @@
-aiohttp==2.3.10
-aiohttp-jinja2==0.16.0
-aiosocks==0.2.6
+aiohttp
+aiohttp-jinja2
+# aiosocksy==0.2.6
+aiosocksy
 lxml==4.3.1
 fake-useragent
 jinja2

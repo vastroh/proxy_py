@@ -1,0 +1,29 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+aiohttp = "*"
+aiohttp-jinja2 = "*"
+aiosocksy = "*"
+lxml = "==4.3.1"
+fake-useragent = "*"
+peewee-async = "==0.5.12"
+aiopg = "==0.16.0"
+recommonmark = "*"
+sphinx-rtd-theme = "*"
+py-mini-racer = "*"
+pytest = "*"
+pytest-asyncio = "*"
+termcolor = "*"
+uvloop = "*"
+geoip2 = "*"
+bs4 = "*"
+Jinja2 = "*"
+Sphinx = "*"
+
+[requires]
+python_version = "3.7"
