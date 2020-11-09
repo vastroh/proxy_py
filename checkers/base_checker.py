@@ -1,3 +1,5 @@
+import time
+
 from aiosocksy.connector import ProxyConnector, ProxyClientRequest
 from proxy_py import settings
 
@@ -48,6 +50,10 @@ class BaseChecker:
         self.request_type = request_type
         self.timeout = timeout if timeout is not None else settings.PROXY_CHECKING_TIMEOUT
         self.url = url
+
+        self.trace_config = aiohttp.TraceConfig()
+        self.trace_config.on_request_start.append(self.on_request_start)
+        self.trace_config.on_request_end.append(self.on_request_end)
 
     @staticmethod
     async def init():
@@ -110,6 +116,12 @@ class BaseChecker:
 
         return False, None
 
+    async def on_request_start(self, session, trace_config_ctx, params):
+        self.request_start = time.time()
+
+    async def on_request_end(self, session, trace_config_ctx, params):
+        self.request_duration = time.time() - self.request_start
+
     async def _request(self, proxy_address, timeout) -> tuple:
         checker_result = CheckerResult()
 
@@ -120,7 +132,8 @@ class BaseChecker:
         conn = BaseChecker.get_aiohttp_connector()
 
         async with aiohttp.ClientSession(
-            connector=conn, connector_owner=False, request_class=ProxyClientRequest
+            connector=conn, connector_owner=False, request_class=ProxyClientRequest,
+            trace_configs=[self.trace_config]
         ) as session:
             async with session.request(
                 self.request_type, self.url, proxy=proxy_address, timeout=timeout, headers=headers

@@ -12,4 +12,6 @@ class LocalbitcoinsComChecker(BaseChecker):
         We have already done the request and it was successful,
         Google returned something(maybe good response, maybe captcha, we don't care)
         '''
-        return True
+        is_valid = response.status == 200 and self.request_duration < 10
+
+        return is_valid
