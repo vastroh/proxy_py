@@ -8,6 +8,7 @@ Settings evaluation order:
 
 """
 from checkers.google_com_checker import GoogleComChecker
+from checkers import LocalbitcoinsComChecker
 
 import string
 import os
@@ -81,7 +82,8 @@ NUMBER_OF_CONCURRENT_COLLECTORS = 1
 MINIMUM_NUMBER_OF_CHECKERS_PER_PROXY = 1
 
 PROXY_CHECKERS = [
-    GoogleComChecker,
+    # GoogleComChecker,
+    LocalbitcoinsComChecker
 ]
 
 
